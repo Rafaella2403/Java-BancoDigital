@@ -9,4 +9,7 @@ public interface InterfaceConta {
 	void depositar(double valor);
 	
 	void transferencia(double valor, Conta contaDestino);
+	
+	String toString();
+	
 }

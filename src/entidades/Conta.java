@@ -35,7 +35,17 @@ public abstract class Conta implements InterfaceConta{
 
 	@Override
 	public void transferencia(double valor, Conta contaDestino) {
-		sacar(valor);
+		this.sacar(valor);
+		contaDestino.depositar(valor);
 	}
-
+	
+	public String toString() {
+		return "Agência: " +
+				agencia +
+				"\nConta: " +
+				contaId + 
+				"\nSaldo: " +
+				saldo;
+	}
+	
 }
