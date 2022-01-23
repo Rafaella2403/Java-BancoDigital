@@ -2,7 +2,6 @@ package aplicacao;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import entidades.Cliente;
 import entidades.Conta;
 import entidades.ContaCorrente;
@@ -21,8 +20,7 @@ public class Banco {
 		System.out.print("Deseja criar uma conta? (S/N) ");
 		resposta = sc.nextLine().toUpperCase().charAt(0);
 		
-		while(resposta == 'S') {
-		
+		while(resposta == 'S'){
 			System.out.print("Qual a operação da nova conta, corrente ou poupança? ");
 			operacaoConta = sc.nextLine().toLowerCase();
 			
@@ -31,7 +29,6 @@ public class Banco {
 				operacaoConta = sc.nextLine();
 			}
 			
-			System.out.println();
 			System.out.print("Digite o nome completo do cliente: ");
 			String nome = sc.nextLine();
 			
@@ -53,15 +50,38 @@ public class Banco {
 					cc.depositar(valor);
 					System.out.println();
 					cc.dadosConta(cliente.getNomeCliente(), cliente.getCpfCliente());
+					contas.add(cc.getContaId());
 				}
 				else if (operacaoConta.equals("poupanca")){
 					Conta cp = new ContaPoupanca();
 					cp.depositar(valor);
 					System.out.println();
 					cp.dadosConta(cliente.getNomeCliente(), cliente.getCpfCliente());
+					contas.add(cp.getContaId());
 				}	
 			}
+			else {
+				if(operacaoConta.equals("corrente")){
+					Conta cc = new ContaCorrente();	
+					System.out.println();
+					cc.dadosConta(cliente.getNomeCliente(), cliente.getCpfCliente());
+					contas.add(cc.getContaId());
+				}
+				else if (operacaoConta.equals("poupanca")){
+					Conta cp = new ContaPoupanca();
+					System.out.println();
+					cp.dadosConta(cliente.getNomeCliente(), cliente.getCpfCliente());
+					//Adicionando a lista contas
+					contas.add(cp.getContaId());
+				}
+			}
+			
+			System.out.print("Deseja criar uma conta? (S/N) ");
+			resposta = sc.nextLine().toUpperCase().charAt(0);
+			
 		}
+		System.out.println("Número das contas criadas: " + contas);
+		
 		sc.close();
 	}
 }
