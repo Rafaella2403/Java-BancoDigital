@@ -1,26 +1,41 @@
 package entidades;
 
-public class Conta {
+import interfaces.InterfaceConta;
 
-	private int contaId;
-	private int agencia;
-	private double saldo;
-	
-	public Conta(int contaId, int agencia, double saldo) {
-		super();
-		this.contaId = contaId;
-		this.agencia = agencia;
-		this.saldo = saldo;
+public abstract class Conta implements InterfaceConta{
+
+	protected int contaId;
+	private static final int AGENCIA = 1568;
+	protected double saldo;
+	protected int agencia;
+	private static int SEQUENCIAL = 1;
+
+	public Conta() {
+		this.agencia = AGENCIA;
+		this.contaId = SEQUENCIAL ++;
 	}
-
+	
 	public int getContaId() {
 		return contaId;
 	}
-	public int getAgencia() {
-		return agencia;
-	}
+	
 	public double getSaldo() {
 		return saldo;
+	}
+
+	@Override
+	public void sacar(double valor) {
+		saldo -= valor;
+	}
+
+	@Override
+	public void depositar(double valor) {
+		saldo += valor;
+	}
+
+	@Override
+	public void transferencia(double valor, Conta contaDestino) {
+		sacar(valor);
 	}
 
 }
