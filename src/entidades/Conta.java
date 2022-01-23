@@ -39,13 +39,13 @@ public abstract class Conta implements InterfaceConta{
 		contaDestino.depositar(valor);
 	}
 	
-	public String toString() {
-		return "Agência: " +
-				agencia +
-				"\nConta: " +
-				contaId + 
-				"\nSaldo: " +
-				saldo;
+	public void dadosConta(String nomeCliente, String cpfCliente) {
+		System.out.println("Dados da conta");
+		System.out.println("Agência: " + agencia);
+		System.out.println("Conta: " + contaId);
+		System.out.println("Cliente: " + nomeCliente);
+		System.out.println("CPF: " + cpfCliente);
+		System.out.println("Saldo inicial: " + saldo);
 	}
 	
 }

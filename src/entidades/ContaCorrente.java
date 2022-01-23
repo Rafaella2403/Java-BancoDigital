@@ -2,8 +2,8 @@ package entidades;
 
 public class ContaCorrente extends Conta{
 	
-	public String extrato() {
-		return " Extrato conta corrente\n" + toString();
+	public void dadosConta(Cliente nomeCliente, Cliente cpfCliente) {
+		dadosConta(nomeCliente, cpfCliente);
 	}
 	
 }
